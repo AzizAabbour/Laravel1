@@ -26,8 +26,7 @@ class ContactController extends Controller {
             'phone' => 'required|string|max:20',
         ]);
         Contact::create($request->only('name', 'email', 'phone'));
-        return redirect()->route('contacts.index')
-                     ->with('success', 'Contact ajouté !');
+        return redirect()->route('contacts.index');
     }
 
     /** Formulaire de modification */
@@ -42,6 +41,7 @@ class ContactController extends Controller {
             'email' => 'required|email|unique:contacts,email,'.$contact->id,
             'phone' => 'required|string|max:20',
         ]);
+        git 
         $contact->update($request->only('name', 'email', 'phone'));
         return redirect()->route('contacts.index')
                      ->with('success', 'Contact mis à jour !');
